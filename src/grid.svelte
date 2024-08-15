@@ -35,6 +35,11 @@ export let Player
 </script>
 
 <main>
+{#if Winner === 1}
+<h2>X</h2>
+{:else if Winner === 2}
+<h2>O</h2>
+{:else}
 <table>
 {#each array as row, rowNum}
 <tr>
@@ -48,6 +53,7 @@ export let Player
 </tr>
 {/each}
 </table>
+{/if}
 </main>
 
 <style>
