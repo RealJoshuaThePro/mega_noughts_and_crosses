@@ -1,4 +1,6 @@
 <script>
+export let win
+export let switchplayer
 let Winner=null
 let array=[[null,null,null],[null,null,null],[null,null,null]]
 let isWinner = () => {
@@ -13,16 +15,18 @@ let isWinner = () => {
   if (array[0][0] === 'o' && array[1][1] === 'o' && array[2][2] === 'o') Winner=2
   if (array[2][0] === 'x' && array[1][1] === 'x' && array[0][2] === 'x') Winner=1
   if (array[2][0] === 'o' && array[1][1] === 'o' && array[0][2] === 'o') Winner=2
+  if (Winner) {
+    win(Winner)
+  }
 }
 let handleClick = (rowNum, colNum) => {
 
   if (Player === 1) {
-    Player=2
       array[rowNum][colNum] = 'x'
   } else {
-    Player=1
       array[rowNum][colNum] = 'o'
   }
+  switchplayer()
   isWinner()
 }
 
