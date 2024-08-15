@@ -1,4 +1,6 @@
 <script>
+let width=3
+let height=3
 function gridiswon(WinningPlayer) {
   Winner=WinningPlayer
 }
@@ -18,7 +20,20 @@ function switchplayer() {
 {#if Winner}
 <h1>Player {Winner} wins!</h1>
 {:else}
-<Grid Player={Player} switchplayer={switchplayer} win={gridiswon}/>
+<table>
+{#each {length: height} as row, rowNum}
+<tr>
+{#each {length: width} as col, colNum}
+    <td>
+      <Grid
+        Player={Player}
+        switchplayer={switchplayer}
+        win={gridiswon}/>
+        </td>
+    {/each}
+    </tr>
+  {/each}
+</table>
 <p>
 Player {Player}
 </p>
@@ -26,10 +41,6 @@ Player {Player}
 </main>
 
 <style>
-td {
-  width: 20px;
-  background-color: #ff0000;
-}
 p {
   color: lightblue;
 }
